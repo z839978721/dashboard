@@ -1,6 +1,6 @@
 package com.cloud.dao;
 
-import com.cloud.user.User;
+import com.cloud.model.User;
 
 import java.util.List;
 

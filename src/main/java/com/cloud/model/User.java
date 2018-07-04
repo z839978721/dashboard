@@ -1,4 +1,4 @@
-package com.cloud.user;
+package com.cloud.model;
 
 public class User {
     private Integer id;

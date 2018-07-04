@@ -39,13 +39,8 @@ public class ResultAspect {
 
     @Around("log()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        Result result = null;
         try {
-            if(result == null){
-                return proceedingJoinPoint.proceed();
-            }else {
-                return result;
-            }
+            return proceedingJoinPoint.proceed();
         } catch (Exception e) {
             return ResultHandle.get(e);
         }

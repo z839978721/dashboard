@@ -1,4 +1,4 @@
-package com.cloud.user;
+package com.cloud.app.user;
 
 import com.cloud.dao.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,3 +17,4 @@ public class UserServiceImpl implements IUserService {
         return  userDao.findAllUser();
     }
 }
+

@@ -34,7 +34,14 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.com.cloud.model
+  type-aliases-package: com.cloud.model
+
+#配置分页插件pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
 
 logging:
   config: classpath:log4j2.yml

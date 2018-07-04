@@ -2,6 +2,10 @@ package com.cloud.aspect;
 
 public class ResultException extends RuntimeException {
 
+    /**
+     * 返回结果异常处理
+     */
+    private static final long serialVersionUID = 1L;
     private Integer code;
 
     /**

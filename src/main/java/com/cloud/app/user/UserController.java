@@ -1,4 +1,4 @@
-package com.cloud.user;
+package com.cloud.app.user;
 
 import com.cloud.aspect.Result;
 import com.cloud.aspect.ResultHandle;
@@ -26,7 +26,9 @@ public class UserController {
 
     @RequestMapping(value = {"/findAll"},produces = {"application/json;charset=UTF-8"},method = RequestMethod.GET)
     public Result getAllUsers(){
+        Result result = ResultUtil.success();
         List list =  userService.findAllUser();
-        return ResultUtil.success(list);
+        result = ResultUtil.success(list);
+        return result;
     }
 }

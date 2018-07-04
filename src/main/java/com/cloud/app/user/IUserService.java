@@ -1,4 +1,4 @@
-package com.cloud.user;
+package com.cloud.app.user;
 
 import java.util.List;
 
