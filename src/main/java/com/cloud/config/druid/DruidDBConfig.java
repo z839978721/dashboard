@@ -1,4 +1,4 @@
-package com.cloud.config;
+package com.cloud.config.druid;
 
 
 import com.alibaba.druid.pool.DruidDataSource;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloud.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.cloud.model.User">
+<mapper namespace="com.cloud.dao.user.UserMapper">
+  <resultMap id="BaseResultMap" type="com.cloud.model.user.User">
     <id column="Id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -21,13 +21,13 @@
     delete from c_user
     where Id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.cloud.model.User">
+  <insert id="insert" parameterType="com.cloud.model.user.User">
     insert into c_user (Id, name, password, 
       email, phone)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.cloud.model.User">
+  <insert id="insertSelective" parameterType="com.cloud.model.user.User">
     insert into c_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.model.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloud.model.user.User">
     update c_user
     <set>
       <if test="name != null">
@@ -82,7 +82,7 @@
     </set>
     where Id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cloud.model.User">
+  <update id="updateByPrimaryKey" parameterType="com.cloud.model.user.User">
     update c_user
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -90,7 +90,7 @@
       phone = #{phone,jdbcType=VARCHAR}
     where Id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="findAllUser" resultType="com.cloud.model.User">
+  <select id="findAllUser" resultType="com.cloud.model.user.User">
     select * from c_user
   </select>
 </mapper>

@@ -1,8 +1,8 @@
-package com.cloud.dao;
-
-import com.cloud.model.User;
+package com.cloud.dao.user;
 
 import java.util.List;
+
+import com.cloud.model.user.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);

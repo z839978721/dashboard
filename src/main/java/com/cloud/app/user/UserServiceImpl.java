@@ -1,8 +1,9 @@
 package com.cloud.app.user;
 
-import com.cloud.dao.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.cloud.dao.user.UserMapper;
 
 import java.util.List;
 
