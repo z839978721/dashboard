@@ -1,4 +1,4 @@
-package com.cloud.aspect;
+package com.cloud.aspect.result;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

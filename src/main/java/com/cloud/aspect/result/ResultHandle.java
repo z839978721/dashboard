@@ -1,4 +1,4 @@
-package com.cloud.aspect;
+package com.cloud.aspect.result;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

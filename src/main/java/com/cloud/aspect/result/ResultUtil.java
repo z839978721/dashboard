@@ -1,4 +1,4 @@
-package com.cloud.aspect;
+package com.cloud.aspect.result;
 
 public class ResultUtil {
 
