@@ -1,23 +1,21 @@
 package com.cloud.app.user;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cloud.aspect.Result;
-import com.cloud.aspect.ResultHandle;
-import com.cloud.aspect.ResultUtil;
+import com.cloud.aspect.result.Result;
+import com.cloud.aspect.result.ResultHandle;
+import com.cloud.aspect.result.ResultUtil;
 
-@RestController
+@Controller
 @RequestMapping(value = {"/user"})
 public class UserController {
 
@@ -28,8 +26,15 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
-
+    
+    @RequestMapping("/whoim")
+    @ResponseBody
+    public Object whoIm(){
+    	return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+    
     @RequestMapping(value = {"/findAll"},produces = {"application/json;charset=UTF-8"},method = RequestMethod.GET)
+    @ResponseBody
     public Result getAllUsers(){
         Result result = ResultUtil.success();
         List list =  userService.findAllUser();

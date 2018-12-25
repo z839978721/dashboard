@@ -1,11 +1,11 @@
 package com.cloud.app.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cloud.dao.user.UserMapper;
-
-import java.util.List;
 
 @Service(value = "userService")
 public class UserService implements IUserService {
@@ -17,5 +17,6 @@ public class UserService implements IUserService {
     public List findAllUser(){
         return  userDao.findAllUser();
     }
+    
 }
 
