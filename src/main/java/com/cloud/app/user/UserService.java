@@ -11,12 +11,11 @@ import com.cloud.dao.user.UserMapper;
 public class UserService implements IUserService {
 
     @Autowired
-    private UserMapper userDao;//这里可能会报错，但是并不会影响
+    private UserMapper userDao;
 
     @Override
     public List findAllUser(){
-        return  userDao.findAllUser();
+        return null;
     }
     
 }
-
