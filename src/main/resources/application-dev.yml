@@ -1,8 +1,7 @@
 server:
   port: 8081
   #设置session超时时间
-  session:
-    timeout: 120
+  session-timeout: 120
 
 spring:
   #session存储类型

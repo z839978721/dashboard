@@ -18,7 +18,15 @@
 	    <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
 	    <!-- 格式化XML代码 -->
 	    <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
-        <commentGenerator type="com.cloud.config.generator.GlobalCommentGenerator">
+	    <!-- 分页相关 -->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+        <!-- 序列化接口 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <!-- 精简代码-->
+	    <plugin type="com.cloud.config.generator.MybatisPluginAdapter" >
+            <property name="hasLombok" value="true"/>
+        </plugin>
+        <commentGenerator type="com.cloud.config.generator.MybatisCommentGenerator">
         	<!-- 去掉生成日期注释
             <property name="suppressDate" value="true"/> -->
             <!-- 去除自动生成的注释 true:是 : false:否
@@ -37,7 +45,7 @@
             <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
         <!-- java模型创建器 -->
-        <javaModelGenerator targetPackage="com.cloud.model.user" targetProject="dashboard/src/main/java/">
+        <javaModelGenerator targetPackage="com.cloud.model" targetProject="dashboard/src/main/java/">
         	<!-- model添加构造函数 -->    
             <property name="constructorBased" value="false"/>
         	<!-- 在targetPackage的基础上,根据数据库的schema再生成一层package,最终生成的类放在这个package下,默认为false -->
@@ -46,7 +54,7 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成SQL map的XML文件生成器 -->
-        <sqlMapGenerator targetPackage="mapper.user" targetProject="dashboard/src/main/resources">
+        <sqlMapGenerator targetPackage="mapper" targetProject="dashboard/src/main/resources">
         	<!-- 在targetPackage的基础上,根据数据库的schema再生成一层package,最终生成的类放在这个package下,默认为false -->
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
@@ -56,7 +64,7 @@
             2。MIXEDMAPPER:使用混合配置,会生成Mapper接口,并适当添加合适的Annotation,但是XML会生成在XML中;
             3。XMLMAPPER:会生成Mapper接口,接口完全依赖XML;
        	 注意,如果context是MyBatis3Simple:只支持ANNOTATEDMAPPER和XMLMAPPER-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cloud.dao.user" targetProject="dashboard/src/main/java/">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cloud.dao" targetProject="dashboard/src/main/java/">
         	<!-- 在targetPackage的基础上,根据数据库的schema再生成一层package,最终生成的类放在这个package下,默认为false -->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>

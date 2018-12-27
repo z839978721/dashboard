@@ -16,14 +16,14 @@ import org.springframework.stereotype.Component;
 public class SecurityAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
-    private UserDetailsService userDao;
+    private UserDetailsService securityUserDetailsService;
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String userName = authentication.getName();// 这个获取表单输入中返回的用户名;
         String password = (String) authentication.getPrincipal();// 这个是表单中输入的密码；
         // 这里构建来判断用户是否存在和密码是否正确
-        SecurityUser userInfo = (SecurityUser) userDao.loadUserByUsername(userName); // 这里调用我们的自己写的获取用户的方法；
+        SecurityUser userInfo = (SecurityUser) securityUserDetailsService.loadUserByUsername(userName); // 这里调用我们的自己写的获取用户的方法；
         if (userInfo == null) {
               throw new BadCredentialsException("用户名不存在");
         }
