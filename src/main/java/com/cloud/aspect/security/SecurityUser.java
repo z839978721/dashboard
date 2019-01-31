@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.cloud.model.user.User;
+import com.cloud.model.user.UserEnum;
 
 public class SecurityUser implements Serializable, UserDetails {
 	
@@ -13,63 +15,54 @@ public class SecurityUser implements Serializable, UserDetails {
 	 * 认证用户
 	 */
 	private static final long serialVersionUID = 2549852338883670312L;
-	private String username;
-    private String password;
-    private String role;
-    //过期
-    private boolean accountNonExpired;
-    //锁定
-    private boolean accountNonLocked;
-    //凭证（密码）过期
-    private boolean credentialsNonExpired;
-    //禁用
-    private boolean enabled;
+	// 用户
+	private User user;
+	// 角色
+	private Collection<? extends GrantedAuthority> grantedAuthority;
 
-	public SecurityUser(String username, String password, String role, boolean accountNonExpired, boolean accountNonLocked,
-			boolean credentialsNonExpired, boolean enabled) {
+	public SecurityUser(User user, Collection<? extends GrantedAuthority> grantedAuthority) {
 		super();
-		this.username = username;
-		this.password = password;
-		this.role = role;
-		this.accountNonExpired = accountNonExpired;
-		this.accountNonLocked = accountNonLocked;
-		this.credentialsNonExpired = credentialsNonExpired;
-		this.enabled = enabled;
+		this.user = user;
+		this.grantedAuthority = grantedAuthority;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return AuthorityUtils.commaSeparatedStringToAuthorityList(role);
+		return grantedAuthority;
+	}
+	
+	@Override
+	public String getUsername() {
+		return this.user.getUsername();
 	}
 
 	@Override
 	public String getPassword() {
-		return password;
+		return this.user.getPassword();
 	}
 
-	@Override
-	public String getUsername() {
-		return username;
-	}
-
+	// 过期
 	@Override
 	public boolean isAccountNonExpired() {
-		return accountNonExpired;
+		return this.user.getStatus().equals(UserEnum.ACCOUNTNONEXPIRED.getValue());
 	}
 
+	// 锁定
 	@Override
 	public boolean isAccountNonLocked() {
-		return accountNonLocked;
+		return this.user.getStatus().equals(UserEnum.ACCOUNTNONLOCKED.getValue());
 	}
 
+	// 凭证（密码）过期
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return credentialsNonExpired;
+		return this.user.getStatus().equals(UserEnum.CREDENTIALSNONEXPIRED.getValue());
 	}
 
+	// 禁用
 	@Override
 	public boolean isEnabled() {
-		return enabled;
+		return this.user.getStatus().equals(UserEnum.ENABLED.getValue());
 	}
 	
     

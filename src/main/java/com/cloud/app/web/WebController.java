@@ -17,4 +17,11 @@ public class WebController {
 		
         return "login";
     }
+	
+	@RequestMapping(value = {"/hello"})
+    public String hello(){
+		
+        return "hello";
+    }
+	
 }

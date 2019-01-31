@@ -1,7 +1,9 @@
 server:
   port: 8081
+  context-path: cloud
   #设置session超时时间
   session-timeout: 120
+  uri-encoding: UTF-8
 
 spring:
   #session存储类型
@@ -39,7 +41,16 @@ spring:
     filters: stat,log4j2,wall
     # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
     spring.datasource.connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  #热部署
+  devtools:
+    restart:
+      enable: true
+      #需重启目录
+      additoinal-paths: src/main/java,src/main/resources
+      #排除目录
+      exclude: static/**,templates/**
   thymeleaf:
+    #即时刷新
     cache:false
     prefix:classpath:/templates/
     mode:HTML5

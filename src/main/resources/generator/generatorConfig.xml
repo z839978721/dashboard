@@ -45,7 +45,7 @@
             <property name="forceBigDecimals" value="true"/>
         </javaTypeResolver>
         <!-- java模型创建器 -->
-        <javaModelGenerator targetPackage="com.cloud.model" targetProject="dashboard/src/main/java/">
+        <javaModelGenerator targetPackage="com.cloud.model.role" targetProject="dashboard/src/main/java/">
         	<!-- model添加构造函数 -->    
             <property name="constructorBased" value="false"/>
         	<!-- 在targetPackage的基础上,根据数据库的schema再生成一层package,最终生成的类放在这个package下,默认为false -->
@@ -54,7 +54,7 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成SQL map的XML文件生成器 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="dashboard/src/main/resources">
+        <sqlMapGenerator targetPackage="mapper.role" targetProject="dashboard/src/main/resources">
         	<!-- 在targetPackage的基础上,根据数据库的schema再生成一层package,最终生成的类放在这个package下,默认为false -->
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
@@ -64,10 +64,11 @@
             2。MIXEDMAPPER:使用混合配置,会生成Mapper接口,并适当添加合适的Annotation,但是XML会生成在XML中;
             3。XMLMAPPER:会生成Mapper接口,接口完全依赖XML;
        	 注意,如果context是MyBatis3Simple:只支持ANNOTATEDMAPPER和XMLMAPPER-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cloud.dao" targetProject="dashboard/src/main/java/">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.cloud.dao.role" targetProject="dashboard/src/main/java/">
         	<!-- 在targetPackage的基础上,根据数据库的schema再生成一层package,最终生成的类放在这个package下,默认为false -->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
+        
         <!-- table生成相关文件
 			enableInsert(默认true):指定是否生成insert语句;
 			enableSelectByPrimaryKey(默认true):指定是否生成按照主键查询对象的语句(就是getById或get);
@@ -78,7 +79,7 @@
 			enableCountByExample(默认true):MyBatis3Simple为false,指定是否生成动态查询总条数语句(用于分页的总条数查询);
 			enableUpdateByExample(默认true):MyBatis3Simple为false,指定是否生成动态修改语句(只修改对象中不为空的属性);
 			enableDeleteByExample(默认true):MyBatis3Simple为false,指定是否生成动态删除语句;-->
-        <table tableName="t_users" domainObjectName="User" enableSelectByExample="false" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+        <table tableName="t_roles" domainObjectName="Role" enableSelectByExample="false" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
         selectByExampleQueryId="true">
 	        <!-- 设置忽略的列
 	        	<ignoreColumn column="password" />-->

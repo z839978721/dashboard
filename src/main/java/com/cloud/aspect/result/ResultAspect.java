@@ -42,7 +42,8 @@ public class ResultAspect {
         try {
             return proceedingJoinPoint.proceed();
         } catch (Exception e) {
-            return ResultHandle.get(e);
+            //return ResultHandle.get(e);
+            return null;
         }
 
     }
